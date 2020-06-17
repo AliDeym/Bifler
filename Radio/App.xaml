@@ -1,0 +1,14 @@
+﻿<Application
+    x:Class="Radio.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Radio"
+    RequestedTheme="Light">
+
+    <Application.Resources>
+        <x:String x:Key="Calibrating">در حال کالیبر</x:String>
+        <x:String x:Key="Error">خطا</x:String>
+        <x:String x:Key="PendingProject">آماده شروع</x:String>
+        <x:String x:Key="Stopped">متوقف</x:String>
+    </Application.Resources>
+</Application>

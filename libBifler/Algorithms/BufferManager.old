@@ -1,0 +1,377 @@
+﻿/*
+Copyright (C) 2017-2018 Ali Deym
+This file is part of Bifler <https://github.com/alideym/bifler>.
+
+Bifler is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Bifler is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Bifler.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+using System.IO;
+using System.Drawing;
+using System.Threading;
+using System.Drawing.Imaging;
+using System.Diagnostics;
+
+namespace libBifler.Algorithms
+{
+	public class BufferManager
+	{
+		// Current index to write into RAM.
+		//private int _currentMemoryIndex;
+
+
+		// Save index for each thread/task.
+		//private Dictionary<int, int> threadIndex;
+
+
+		// Handles buffered images.
+		Dictionary<string, BufferImage> bufferedImages = null;
+
+
+
+		/// <summary>
+		/// Buffer size.
+		/// </summary>
+		public int BufferSize { get; private set; }
+
+
+		/// <summary>
+		/// Number of saving threads.
+		/// </summary>
+		public int ThreadCount { get; private set; }
+
+
+
+		private Thread schedulerThread = null;
+
+		private EncoderParameters encoderParams = null;
+		private ImageCodecInfo JPEGCodec = null;
+		private Encoder encoder = null;
+		
+
+
+		// Contains reference of index as string (file path.)
+		private Dictionary<int, string> threadImage;
+
+
+		private int [] threadIds;
+
+
+	
+
+		/// <summary>
+		/// Manages image saving handles.
+		/// </summary>
+		public BufferManager (int bufferSize = 64, int saveThreads = 4)
+		{
+			BufferSize = bufferSize;
+			ThreadCount = saveThreads;
+
+
+			bufferedImages = new Dictionary<string, BufferImage> ();
+
+			threadImage = new Dictionary<int, string> ();
+
+			threadIds = new int [ThreadCount];
+
+			/*for (int i = 0; i < bufferSize; i++)
+				bufferedImages [i] = new BufferImage ();*/
+
+
+
+
+			//_currentMemoryIndex = 0;
+		}
+
+
+
+
+
+		public void Initialize ()
+		{
+			//threadIndex = new Dictionary<int, int> ();
+
+			JPEGCodec = GetEncoder (ImageFormat.Jpeg);
+
+			encoder = Encoder.Compression;
+
+			encoderParams = new EncoderParameters (1);
+
+			encoderParams.Param [0] = new EncoderParameter (encoder, 30L);
+
+
+			// Start scheduler thread.
+			schedulerThread = new Thread (schedule);
+
+
+
+			// Create each save thread.
+			for (int i = 0; i < ThreadCount; i++) {
+
+				var t = new Thread (saveThread);
+
+				threadImage [t.ManagedThreadId] = null;
+				threadIds [i] = t.ManagedThreadId;
+
+				
+				t.Start ();
+
+			}
+
+			// Start scheduler after every save thread.
+			schedulerThread.Start ();
+
+
+		}
+
+
+		private ImageCodecInfo GetEncoder (ImageFormat format)
+		{
+
+			ImageCodecInfo [] codecs = ImageCodecInfo.GetImageDecoders ();
+
+			foreach (ImageCodecInfo codec in codecs) {
+				if (codec.FormatID == format.Guid) {
+					return codec;
+				}
+			}
+			return null;
+		}
+
+
+		private int nextThread;
+
+		private void schedule ()
+		{
+			nextThread = 0;
+
+			for (;;) {
+
+				// Skip scheduling if threads aren't created yet. (Chance of this happening is none i guess.)
+				if (threadIds == null) {
+					Thread.Sleep (50);
+					continue;
+				}
+
+				if (nextThread >= ThreadCount)
+					nextThread = 0;
+
+
+
+				// Check if nextThread is busy.
+				for (int i = 0; i < ThreadCount; i++) {
+					var imageStr = threadImage [threadIds[nextThread]];
+
+					if (imageStr != null) {
+
+						var imageFromList = bufferedImages [imageStr];
+
+						if (imageFromList != null) {
+
+							if (imageFromList.IsBusy) {
+
+								nextThread++;
+
+								if (nextThread >= ThreadCount)
+									nextThread = 0;
+
+							} else {
+
+								bufferedImages.Remove (imageStr);
+
+								threadImage [threadIds [nextThread]] = null;
+
+								break;
+
+							}
+
+						}
+
+					}
+
+					break;
+				}
+
+
+				foreach (var keyPair in bufferedImages) {
+					var image = keyPair.Value;
+
+					if (image.IsBusy) continue;
+
+					image.IsBusy = true;
+
+					var threadID = threadIds [nextThread];
+
+					threadImage [threadID] = keyPair.Key;
+
+					nextThread++;
+				}
+
+
+				Thread.Sleep (10);
+			}
+		}
+
+
+		// New loop using lists.
+		private void saveThread ()
+		{
+			for (;;) {
+
+				/*foreach (var image in bufferedImages) {
+
+
+
+					if (image.IsBusy || !image.RequiresSave) {
+
+						continue;
+
+					}
+
+					image.IsBusy = true;
+					image.RequiresSave = false;
+
+					Console.WriteLine ("IMG" + image.FilePath.Substring(image.FilePath.Length - 5) + " - " + Thread.CurrentThread.ManagedThreadId);
+
+					var bitmap = new Bitmap (image.mStream);
+
+
+					bitmap.Save (image.FilePath, JPEGCodec, encoderParams);
+
+					image.IsBusy = false;
+
+					image.mStream.Dispose ();
+
+					bufferedImages.Remove (image);
+
+					break;
+
+				}*/
+
+				var threadID = Thread.CurrentThread.ManagedThreadId;
+
+
+				var index = threadImage [threadID];
+
+				if (index == null) {
+
+					Thread.Sleep (10);
+					continue;
+				}
+
+
+				var img = bufferedImages [index];
+
+				var bitmap = new Bitmap (img.mStream);
+
+
+				bitmap.Save (index, JPEGCodec, encoderParams);
+
+				img.IsBusy = false;
+
+				img.mStream.Dispose ();
+
+				//bufferedImages.Remove (index);
+
+				//threadImage [threadID] = null;
+
+
+				//img.mStream.Dispose ();
+
+				//img = null;
+
+				//GC.Collect ();
+
+
+				Thread.Sleep (10);
+			}
+		}
+
+		/* Old thread using variables.
+		 * private void saveThread ()
+		{
+			// Infinite loop.
+			for (; ; ) {
+				var taskID = Thread.CurrentThread.ManagedThreadId;
+
+				if (!threadIndex.Keys.Contains (taskID))
+					threadIndex.Add (taskID, 0);
+
+				var _currentSaveIndex = threadIndex [taskID];
+
+				if (_currentSaveIndex >= 64) {
+					threadIndex [taskID] = 0;
+
+					_currentSaveIndex = 0;
+				}
+
+
+				var bufferedImage = bufferedImages [_currentSaveIndex];
+
+				if (!bufferedImage.RequiresSave || bufferedImage.IsBusy) {
+					threadIndex[taskID]++;
+
+					continue;
+				}
+
+				bufferedImage.RequiresSave = false;
+				bufferedImage.IsBusy = true;
+
+				var bitmap = Bitmap.FromStream (bufferedImage.mStream);
+
+
+				// Save memoryBitmap using JPEG format.
+				bitmap.Save (bufferedImage.FilePath, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+				bufferedImage.IsBusy = false;
+
+				threadIndex [taskID]++;
+
+			}
+		}*/
+
+
+		/// <summary>
+		/// Reads buffer from bitmap file.
+		/// </summary>
+		/// <param name="filePath">File path for saving the file into.</param>
+		/// <param name="image">Image file (Bitmap).</param>
+		public void ReadBuffer (string filePath, Bitmap image)
+		{
+			var bufferedImage = new BufferImage ();
+
+
+
+
+			// Set save path.
+			//bufferedImage.FilePath = filePath;
+
+
+			// Copy image into memory using Bitmap format.
+			image.Save (bufferedImage.mStream, System.Drawing.Imaging.ImageFormat.Bmp);
+
+			bufferedImage.RequiresSave = true;
+
+
+			// Add the newly created buffer image into schedule list.
+			bufferedImages.Add (filePath, bufferedImage);
+		}
+		
+	}
+}

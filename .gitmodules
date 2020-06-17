@@ -1,0 +1,6 @@
+[submodule "NPOI"]
+	path = NPOI
+	url = https://github.com/dotnetcore/NPOI
+[submodule "greatmaps"]
+	path = greatmaps
+	url = https://github.com/radioman/greatmaps.git

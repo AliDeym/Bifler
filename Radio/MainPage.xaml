@@ -1,0 +1,131 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Radio"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps" x:Name="mainPage"
+    x:Class="Radio.MainPage"
+    mc:Ignorable="d">
+
+    <Grid x:Name="mainGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid x:Name="topGrid" HorizontalAlignment="Stretch" Height="94" VerticalAlignment="Top" Grid.Row="3">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF313E44" Offset="1"/>
+                    <GradientStop Color="#FF121D21" Offset="0.002"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <TextBlock TextWrapping="NoWrap" Text="وضعیت پروژه:" Margin="0,13,5,51" HorizontalAlignment="Right" VerticalAlignment="Stretch" FontFamily="Assets/bnazanin.ttf#B Nazanin" FontSize="22" FocusVisualPrimaryBrush="Black">
+                <TextBlock.Foreground>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF7A7A7A" Offset="0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBlock.Foreground>
+            </TextBlock>
+            <TextBlock TextWrapping="NoWrap" Text="متراژ طی شده:" Margin="0,60,5,0" HorizontalAlignment="Right" VerticalAlignment="Stretch" FontFamily="Assets/bnazanin.ttf#B Nazanin" FontSize="22" FocusVisualPrimaryBrush="Black">
+                <TextBlock.Foreground>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF7A7A7A" Offset="0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBlock.Foreground>
+            </TextBlock>
+
+            <Border x:Name="topBorder" BorderBrush="Black" BorderThickness="1" Opacity="1">
+                <Button x:Name="reloadPlaylist" Content="بارگذاری دوباره فولدر آهنگ" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,360,2" Height="46" Width="271" FontFamily="Assets/bnazanin.ttf#B Nazanin" FontSize="24" Foreground="#FF380B0B" Click="OnPlaylistChange" BorderBrush="#7F000000">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF114880" Offset="0"/>
+                            <GradientStop Color="#FF2572BF" Offset="0.5"/>
+                            <GradientStop Color="#FF114880" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+            </Border>
+            <TextBlock x:Name="calibratingText" TextWrapping="NoWrap" Text="در حال کالیبر" Margin="0,14,135,51" HorizontalAlignment="Right" VerticalAlignment="Stretch" FontFamily="Assets/bnazanin.ttf#B Nazanin" FontSize="22" FontWeight="Bold">
+                <TextBlock.Foreground>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF6E5103" Offset="0"/>
+                        <GradientStop Color="#FFB68400" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBlock.Foreground>
+            </TextBlock>
+            <TextBlock x:Name="startedText" TextWrapping="NoWrap" Text="در حال اجرا" Margin="0,14,134,51" HorizontalAlignment="Right" VerticalAlignment="Stretch" FontFamily="Assets/bnazanin.ttf#B Nazanin" FontSize="22" FontWeight="Bold">
+                <TextBlock.Foreground>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF047455" Offset="0"/>
+                        <GradientStop Color="#FF11B600" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBlock.Foreground>
+            </TextBlock>
+            <TextBlock x:Name="stoppedText" TextWrapping="NoWrap" Text="متوقف" Margin="0,14,135,51" HorizontalAlignment="Right" VerticalAlignment="Stretch" FontFamily="Assets/bnazanin.ttf#B Nazanin" FontSize="22" FontWeight="Bold">
+                <TextBlock.Foreground>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF8B0707" Offset="0"/>
+                        <GradientStop Color="Red" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBlock.Foreground>
+            </TextBlock>
+            <TextBlock x:Name="triggerCounter" TextWrapping="NoWrap" Text="000  +  000" Margin="0,61,135,0" HorizontalAlignment="Right" VerticalAlignment="Stretch" FontSize="22" FontWeight="Bold" FontFamily="Assets/bnazanin.ttf#B Nazanin">
+                <TextBlock.Foreground>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF399C2F" Offset="0"/>
+                        <GradientStop Color="#FF77E046" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBlock.Foreground>
+            </TextBlock>
+            <TextBlock TextWrapping="NoWrap" Text="کیلومتراژ" Margin="0,60,270,0" HorizontalAlignment="Right" VerticalAlignment="Stretch" FontFamily="Assets/bnazanin.ttf#B Nazanin" FontSize="22" FocusVisualPrimaryBrush="Black">
+                <TextBlock.Foreground>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF0969F5" Offset="0"/>
+                        <GradientStop Color="#FF28936C" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBlock.Foreground>
+            </TextBlock>
+            <TextBlock TextWrapping="NoWrap" Text="نام آهنگ:" Margin="0,10,360,54" HorizontalAlignment="Right" VerticalAlignment="Stretch" FontFamily="Assets/bnazanin.ttf#B Nazanin" FontSize="24" FocusVisualPrimaryBrush="Black">
+                <TextBlock.Foreground>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF7A7A7A" Offset="0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBlock.Foreground>
+            </TextBlock>
+            <TextBlock x:Name="musicName" TextWrapping="NoWrap" Text="NONE.MP3" Margin="0,13,465,51" HorizontalAlignment="Right" VerticalAlignment="Stretch" FontFamily="Segoe UI Symbol" FontSize="20" FocusVisualPrimaryBrush="Black">
+                <TextBlock.Foreground>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF6B856A" Offset="0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBlock.Foreground>
+            </TextBlock>
+            <Button x:Name="startProjectButton" Content="شروع پروژه" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,238,42" Height="46" Width="112" FontFamily="Assets/bnazanin.ttf#B Nazanin" FontSize="24" Foreground="#FF380B0B" Click="OnStartProjectButton" BorderBrush="#7F000000" RenderTransformOrigin="1.899,0.536">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF118043" Offset="0"/>
+                        <GradientStop Color="#FF17C365" Offset="0.5"/>
+                        <GradientStop Color="#FF118043" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+        </Grid>
+        <Grid x:Name="centerGrid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,94" Background="#FF313E44">
+            <Maps:MapControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FFC1C1C1"/>
+        </Grid>
+        <Grid x:Name="bottomGrid" HorizontalAlignment="Stretch" Height="94" VerticalAlignment="Bottom">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF313E44" Offset="0"/>
+                    <GradientStop Color="#FF121D21" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Border x:Name="bottomBorder" BorderBrush="Black" BorderThickness="1" Opacity="0.2"/>
+            <MediaPlayerElement x:Name="mediaPlayer" Height="94" VerticalAlignment="Stretch" Margin="0,0,0,0" AreTransportControlsEnabled="True" d:IsHidden="True">
+                <MediaPlayerElement.TransportControls>
+                    <MediaTransportControls IsSeekBarVisible="True" IsVolumeButtonVisible="True" IsZoomButtonVisible="False" IsZoomEnabled="False" IsFullWindowButtonVisible="False" IsVolumeEnabled="True" UseSystemFocusVisuals="True" IsFullWindowEnabled="False" FocusVisualPrimaryBrush="Black"/>
+                </MediaPlayerElement.TransportControls>
+            </MediaPlayerElement>
+        </Grid>
+    </Grid>
+</Page>

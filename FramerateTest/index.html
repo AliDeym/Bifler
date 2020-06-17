@@ -1,0 +1,76 @@
+<!-- 
+Copyright (C) 2017-2018 Ali Deym
+This file is part of Bifler <https://github.com/alideym/bifler>.
+
+Bifler is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Bifler is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Bifler.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+
+<head>
+    <title>FPS test for Basler Camera to screen this. Press any key to reset.</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            var numValue = 0;
+
+            window.setInterval(function () {
+                numValue++;
+
+                if (numValue >= 9999) {
+
+                    numValue = 0;
+                }
+
+                $("#counter").text(numValue);
+            }, 15);
+
+            $(document).keypress(function (event) {
+                numValue = 0;
+            });
+
+        });
+    </script>
+
+    <style type="text/css">
+        .counter-style {
+            margin: -100px;
+            line-height: 0px;
+        }
+    </style>
+
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+    <section class="hero is-bold has-text-centered is-fullheight">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title is-1 counter-style" id="counter" style="font-size: 10rem;">1</h1>
+            </div>
+        </div>
+
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,335 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Altitude" xml:space="preserve">
+    <value>Altitude</value>
+  </data>
+  <data name="Caliber" xml:space="preserve">
+    <value>کالیبر</value>
+  </data>
+  <data name="CaliberFinish" xml:space="preserve">
+    <value>پایان کالیبریشن</value>
+  </data>
+  <data name="CaliberStart" xml:space="preserve">
+    <value>شروع کالیبریشن</value>
+  </data>
+  <data name="Camera" xml:space="preserve">
+    <value>دوربین</value>
+  </data>
+  <data name="CameraInformation" xml:space="preserve">
+    <value>مشخصات دوربین</value>
+  </data>
+  <data name="CameraPhotoIndex" xml:space="preserve">
+    <value>شماره تصویر دوربین</value>
+  </data>
+  <data name="CityName" xml:space="preserve">
+    <value>نام شهرستان</value>
+  </data>
+  <data name="DeviceDisconnected" xml:space="preserve">
+    <value>قطع اتصال با دوربین زیر:</value>
+  </data>
+  <data name="EndProjectRequest" xml:space="preserve">
+    <value>آیا مطمعنید مایل به اتمام پروژه هستید؟</value>
+  </data>
+  <data name="EndProjectText" xml:space="preserve">
+    <value>پایان پروژه</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>خطا</value>
+  </data>
+  <data name="ErrorExposure" xml:space="preserve">
+    <value>دوربین مورد نظر در پیکربندی موجود نیست.</value>
+  </data>
+  <data name="ErrorLogFile" xml:space="preserve">
+    <value>خطای اصلی، لطفا فایل زیر را به پشتیبان ارسال کنید.</value>
+  </data>
+  <data name="FinishArea" xml:space="preserve">
+    <value>محور پایان</value>
+  </data>
+  <data name="FinishTime" xml:space="preserve">
+    <value>زمان پایان</value>
+  </data>
+  <data name="FullName" xml:space="preserve">
+    <value>نام کامل</value>
+  </data>
+  <data name="GeoHeight" xml:space="preserve">
+    <value>GeoHeight</value>
+  </data>
+  <data name="GPSConnectionFailure" xml:space="preserve">
+    <value>خطا در اتصال دستگاه موقعیت یاب در درگاه خواسته شده.
+لطفا درگاه دیگری را امتحان کنید.</value>
+  </data>
+  <data name="GPSConnectionSuccess" xml:space="preserve">
+    <value>دستگاه موقعیت یاب متصل است.</value>
+  </data>
+  <data name="GPSIndex" xml:space="preserve">
+    <value>Index</value>
+  </data>
+  <data name="Index" xml:space="preserve">
+    <value>اندیس</value>
+  </data>
+  <data name="InitializingCore" xml:space="preserve">
+    <value>در حال بارگذاری مرکز برنامه</value>
+  </data>
+  <data name="InitializingGPS" xml:space="preserve">
+    <value>در حال بارگذاری دستگاه موقعیت یاب</value>
+  </data>
+  <data name="LaneCount" xml:space="preserve">
+    <value>تعداد خطوط</value>
+  </data>
+  <data name="Latitude" xml:space="preserve">
+    <value>Lat</value>
+  </data>
+  <data name="LoadingFinished" xml:space="preserve">
+    <value>در حال اجرای برنامه</value>
+  </data>
+  <data name="Longitude" xml:space="preserve">
+    <value>Lon</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>نام</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>خیر</value>
+  </data>
+  <data name="PleaseWait" xml:space="preserve">
+    <value>لطفا کمی صبر کنید...</value>
+  </data>
+  <data name="PluralS" xml:space="preserve">
+    <value>ها</value>
+  </data>
+  <data name="ProjectCode" xml:space="preserve">
+    <value>کد پروژه</value>
+  </data>
+  <data name="ProjectInformation" xml:space="preserve">
+    <value>مشخصات پروژه</value>
+  </data>
+  <data name="ProjectName" xml:space="preserve">
+    <value>نام پروژه</value>
+  </data>
+  <data name="ProvinceCode" xml:space="preserve">
+    <value>کد استان</value>
+  </data>
+  <data name="ProvinceName" xml:space="preserve">
+    <value>نام استان</value>
+  </data>
+  <data name="PylonLibraryError" xml:space="preserve">
+    <value>خطا، درایور های دوربین به درستی نصب نیستند.</value>
+  </data>
+  <data name="PylonLibraryLoading" xml:space="preserve">
+    <value>در حال بارگذاری درایور های دوربین</value>
+  </data>
+  <data name="Range" xml:space="preserve">
+    <value>بازه</value>
+  </data>
+  <data name="SaveIndex" xml:space="preserve">
+    <value>اندیس برنامه</value>
+  </data>
+  <data name="SerialConnectionError" xml:space="preserve">
+    <value>خطا در اتصال دستگاه موقعیت یاب. لطفا کابل مورد نظر را چک کنید و یا آن را جا به جا کنید.</value>
+  </data>
+  <data name="StartArea" xml:space="preserve">
+    <value>محور شروع</value>
+  </data>
+  <data name="StartTime" xml:space="preserve">
+    <value>زمان شروع</value>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="TriggerConnecting" xml:space="preserve">
+    <value>در حال بارگذاری دستگاه تریگر</value>
+  </data>
+  <data name="TriggerConnectionError" xml:space="preserve">
+    <value>خطا در اتصال دستگاه تریگر. لطفا کابل مورد نظر را چک کنید و یا آن را جا به جا کنید.</value>
+  </data>
+  <data name="TriggerConnectionFailure" xml:space="preserve">
+    <value>خطا در اتصال دستگاه تریگر در پورت خواسته شده.
+لطفا پورت دیگری را امتحان کنید.</value>
+  </data>
+  <data name="TriggerConnectionSuccess" xml:space="preserve">
+    <value>دستگاه تریگر متصل است.</value>
+  </data>
+  <data name="TriggerCount" xml:space="preserve">
+    <value>تعداد تریگر</value>
+  </data>
+  <data name="Finished" xml:space="preserve">
+    <value>پایان یافته</value>
+  </data>
+  <data name="GrabCount" xml:space="preserve">
+    <value>متراژ برداشت</value>
+  </data>
+  <data name="NotStarted" xml:space="preserve">
+    <value>شروع نشده</value>
+  </data>
+  <data name="Progressing" xml:space="preserve">
+    <value>در حال اجرا</value>
+  </data>
+  <data name="ProjectStatus" xml:space="preserve">
+    <value>وضعیت پروژه</value>
+  </data>
+  <data name="ProjectTime" xml:space="preserve">
+    <value>زمان پروژه</value>
+  </data>
+  <data name="StartKilometer" xml:space="preserve">
+    <value>کیلومتر شروع</value>
+  </data>
+  <data name="CameraPicture" xml:space="preserve">
+    <value>تصویر دوربین</value>
+  </data>
+  <data name="Kilometer" xml:space="preserve">
+    <value>کیلومتر</value>
+  </data>
+  <data name="Meter" xml:space="preserve">
+    <value>متر</value>
+  </data>
+  <data name="GeoDirection" xml:space="preserve">
+    <value>جهت جغرافیایی</value>
+  </data>
+  <data name="TraveledUnit" xml:space="preserve">
+    <value>کیلومتراژ</value>
+  </data>
+  <data name="ProjectFinishTime" xml:space="preserve">
+    <value>زمان پایان پروژه</value>
+  </data>
+  <data name="ProjectStartTime" xml:space="preserve">
+    <value>زمان شروع پروژه</value>
+  </data>
+  <data name="MapWarning" xml:space="preserve">
+    <value>توجه: برای استفاده از مپ اکیدا توصیه میشود خودرو در حالت توقف کامل باشد. در صورتی که خودروی شما در حالت توقف کامل قرار دارد، گزینه اوکی را بزنید</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>احتیاط</value>
+  </data>
+  <data name="FolderError" xml:space="preserve">
+    <value>خطای ایجاد فایل های پروژه، لطفا پوشه پروژه را چک کنید.</value>
+  </data>
+  <data name="Lane" xml:space="preserve">
+    <value>لاین</value>
+  </data>
+  <data name="AppIsAlreadyOpen" xml:space="preserve">
+    <value>در حال حاضر شما یک نسخه دیگر از برنامه را باز گذاشته اید</value>
+  </data>
+  <data name="CameraAlreadyOpen" xml:space="preserve">
+    <value>دوربین در برنامه دیگری (و یا تنظیمات باسلر) باز است، لطفا برنامه دیگر را بسته و برنامه برداشت را دوباره باز کنید.</value>
+  </data>
+  <data name="ProjectPending" xml:space="preserve">
+    <value>آماده اجرا</value>
+  </data>
+</root>

@@ -4,3 +4,6 @@
 [submodule "greatmaps"]
 	path = greatmaps
 	url = https://github.com/radioman/greatmaps.git
+[submodule "TriggerServer/RaspberryPi.Net"]
+	path = TriggerServer/RaspberryPi.Net
+	url = https://github.com/cypherkey/RaspberryPi.Net

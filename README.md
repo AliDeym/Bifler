@@ -29,5 +29,6 @@ Radio needs `.NET Core` framework to get compiled. As for board, you need any de
 # Contributors
 
 Bifler © 2017-2018 by
+
 Ali Deym: Developer
 [Hossein Abedi Nashi (Biftor)](https://www.linkedin.com/in/hossein-abedi-nashi): Electronic Circuit Designer, Arduino Developer and Project Manager
